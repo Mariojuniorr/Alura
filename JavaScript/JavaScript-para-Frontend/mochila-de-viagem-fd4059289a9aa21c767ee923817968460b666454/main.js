@@ -1,23 +1,22 @@
 const form = document.getElementById("novoItem");
-const lista = document.getElementById("lista");
-
+const lista = document.querySelector(".lista");
+const nomeInserido = document.getElementById("nome").value;
+const quantidadeInserida = document.getElementById("quantidade").value;
 
 form.addEventListener("submit", (evento) => {
-    evento.preventDefault();
+  evento.preventDefault();
 
-    criaElemento((evento.target.elements['nome'].value), (evento.target.elements['quantidade'].value))
+  criarElementoAoClicar(nomeInserido, quantidadeInserida);
+});
 
-})
+function criarElementoAoClicar(nome, quantidade) {
+  const criarLista = document.createElement("li");
+  criarLista.classList.add("item");
+  const numeroItem = document.createElement("strong");
+  numeroItem.innerHTML = quantidade;
 
-function criaElemento(nome, quantidade){
-    const novoItem = document.createElement("li");
-    novoItem.classList.add("item");
+  criarLista.appendChild(numeroItem);
+  criarLista.innerHTML += nome;
 
-    const numeroItem = document.createElement("strong");
-    numeroItem.innerHTML = quantidade;
-    novoItem.appendChild(numeroItem);
-
-    novoItem.innerHTML += nome;
-
-    lista.appendChild(novoItem);
+  lista.appendChild(criarLista);
 }
