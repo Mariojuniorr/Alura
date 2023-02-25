@@ -1,6 +1,6 @@
 const listaLivros = require('./array');
 
-//Testa o passo a passo da ordenação
+//Testa passo a passo da ordenação
 
 function mergeSort(array, nivelAninhamento = 0) {
 
@@ -23,11 +23,14 @@ function ordena(parte1, parte2) {
   const resultado = []
 
   while (posicaoAtualParte1 < parte1.length && posicaoAtualParte2 < parte2.length) {
-    if (parte1[posicaoAtualParte1].preco < parte2[posicaoAtualParte2].preco) {
-      resultado.push(parte1[posicaoAtualParte1])
+    let produtoAtualParte1 = parte1[posicaoAtualParte1]
+    let produtoAtualParte2 = parte2[posicaoAtualParte2]
+
+    if (produtoAtualParte1.preco < produtoAtualParte2.preco) {
+      resultado.push(produtoAtualParte1)
       posicaoAtualParte1++
     } else {
-      resultado.push(parte2[posicaoAtualParte2])
+      resultado.push(produtoAtualParte2)
       posicaoAtualParte2++
     }
   }
